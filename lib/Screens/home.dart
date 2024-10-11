@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(),
                 ),
                 icon: const Icon(Icons.arrow_drop_down, color: Colors.white),
-                dropdownColor: const Color.fromARGB(255, 17, 2, 78),
+                dropdownColor: const Color.fromARGB(255, 1, 44, 106),
                 isExpanded: true,
                 items: const [
                   DropdownMenuItem(
