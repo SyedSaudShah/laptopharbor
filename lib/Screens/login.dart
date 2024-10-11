@@ -33,6 +33,7 @@ class LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+        final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         children: [
@@ -42,14 +43,17 @@ class LoginScreenState extends State<LoginScreen> {
             right: 0,
             bottom: 0,
             child: CustomContainer(
-              text: '',
-              child: Column(children: [Center(
-                child: CustomText(
-                  'Laptop Login'
+                text: '',
+                child: Column(
+                  children: [
+                    Center(
+                      child: CustomLoginText('Laptop Harbor', style: TextStyle()) 
+                     
+                    )
+                  ],
+                )
+                // SizedBox.shrink(), // No additional child in the top container
                 ),
-              )],)
-                 // SizedBox.shrink(), // No additional child in the top container
-            ),
           ),
           Positioned(
             top: 250, // Adjust based on the height of the first container
@@ -73,85 +77,97 @@ class LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                     const Center(
+                        child:    CustomText(
+                        'Login ',
+                        style: TextStyle(),
+                      ),
+                      ),
+                      SizedBox(height: screenSize.height * 0.05),// SizedBox for spacing
                       TextFormField(
-  decoration: InputDecoration(
-    labelText: 'Email',
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0), // Rounded corners
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.green, // Border color when the field is not focused
-        width: 2.0,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.blue, // Border color when the field is focused
-        width: 2.0,
-      ),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.red, // Border color when there's an error
-        width: 2.0,
-      ),
-    ),
-  ),
-  validator: (value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your email';
-    }
-    return null;
-  },
-  onSaved: (value) {
-    _email = value!;
-  },
-),
-const SizedBox(height: 6,),
+                        decoration: InputDecoration(
+                          labelText: 'Email',
+                          border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.circular(8.0), // Rounded corners
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            borderSide: const BorderSide(
+                              color: Colors
+                                  .green, // Border color when the field is not focused
+                              width: 2.0,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            borderSide: const BorderSide(
+                              color: Colors
+                                  .blue, // Border color when the field is focused
+                              width: 2.0,
+                            ),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            borderSide: const BorderSide(
+                              color: Colors
+                                  .red, // Border color when there's an error
+                              width: 2.0,
+                            ),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your email';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _email = value!;
+                        },
+                      ),
+                      const SizedBox(
+                        height: 6,
+                      ),
                       TextFormField(
-  decoration: InputDecoration(
-    labelText: 'Password',
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.green,
-        width: 2.0,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.blue,
-        width: 2.0,
-      ),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.red,
-        width: 2.0,
-      ),
-    ),
-  ),
-  obscureText: true,
-  validator: (value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your password';
-    }
-    return null;
-  },
-  onSaved: (value) {
-    _password = value!;
-  },
-),
-
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            borderSide: const BorderSide(
+                              color: Colors.green,
+                              width: 2.0,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            borderSide: const BorderSide(
+                              color: Colors.blue,
+                              width: 2.0,
+                            ),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            borderSide: const BorderSide(
+                              color: Colors.red,
+                              width: 2.0,
+                            ),
+                          ),
+                        ),
+                        obscureText: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your password';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _password = value!;
+                        },
+                      ),
                       const SizedBox(height: 20),
                       CustomButton(
                         text: 'Log In',
@@ -165,22 +181,29 @@ const SizedBox(height: 6,),
                             style: const TextStyle(color: Colors.red),
                           ),
                         ),
-                    
                       const SizedBox(
                         height: 8,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Row( mainAxisAlignment: MainAxisAlignment.center, // Centers the button horizontally
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment
+                              .center, // Centers the button horizontally
                           children: [
-                            Signupbtn(text: 'Signup', onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) =>const SignupScreen(),)),)
-                            
+                            Signupbtn(
+                              text: 'Signup',
+                              onPressed: () =>
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const SignupScreen(),
+                              )),
+                            )
                           ],
                         ),
                       ),
-                const      SizedBox(height: 20,),
-                       Image.asset(height: 30,'assets/images/google.png'),
-                     
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Image.asset(height: 30, 'assets/images/google.png'),
                     ],
                   ),
                 ),

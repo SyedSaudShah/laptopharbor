@@ -1,4 +1,8 @@
+
+
 import '../export/exports.dart';
+
+
 class FeedbackScreen extends StatefulWidget {
   const FeedbackScreen({super.key});
 
@@ -8,10 +12,8 @@ class FeedbackScreen extends StatefulWidget {
 
 class FeedbackScreenState extends State<FeedbackScreen> {
   final _formKey = GlobalKey<FormState>();
-  String _name = '';
-  String _email = '';
-  String _feedback = '';
   String? _errorMessage;
+  double _rating = 0.0; // Variable to store the rating value
 
   void _submitFeedback() {
     if (_formKey.currentState!.validate()) {
@@ -22,6 +24,9 @@ class FeedbackScreenState extends State<FeedbackScreen> {
       );
       // Clear the form
       _formKey.currentState!.reset();
+      setState(() {
+        _rating = 0.0; // Reset the rating after submission
+      });
     }
   }
 
@@ -39,142 +44,159 @@ class FeedbackScreenState extends State<FeedbackScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Your feedback is valuable to us!'),
+                const CustomTextFeedBack('We Need your feedback', style: TextStyle()),
+                 
+                const SizedBox(height: 20),
+                   // Star Rating Section
+         const       Center(child:  CustomTextFeedBack('How Would you Rate your exprience \n  with the app today:', style: TextStyle()))
+               ,
+                const SizedBox(height: 10),
+                RatingBar.builder(
+                  initialRating: _rating,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemBuilder: (context, _) => const Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  onRatingUpdate: (rating) {
+                    setState(() {
+                      _rating = rating;
+                    });
+                  },
+                ),
                 const SizedBox(height: 20),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Name',
                     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0), // Rounded corners
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.green, // Border color when the field is not focused
-        width: 2.0,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.blue, // Border color when the field is focused
-        width: 2.0,
-      ),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.red, // Border color when there's an error
-        width: 2.0,
-      ),
-    ),
-  ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                        color: Colors.green,
+                        width: 2.0,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                        color: Colors.blue,
+                        width: 2.0,
+                      ),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                        color: Colors.red,
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your name';
                     }
                     return null;
                   },
-                  onSaved: (value) {
-                    _name = value!;
-                  },
+                  onSaved: (value) {},
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Email',
                     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0), // Rounded corners
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.green, // Border color when the field is not focused
-        width: 2.0,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.blue, // Border color when the field is focused
-        width: 2.0,
-      ),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.red, // Border color when there's an error
-        width: 2.0,
-      ),
-    ),
-  ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                        color: Colors.green,
+                        width: 2.0,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                        color: Colors.blue,
+                        width: 2.0,
+                      ),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                        color: Colors.red,
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your email';
                     }
-                    // Basic email validation
                     if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
                       return 'Please enter a valid email address';
                     }
                     return null;
                   },
-                  onSaved: (value) {
-                    _email = value!;
-                  },
+                  onSaved: (value) {},
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Feedback',
-                     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0), // Rounded corners
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.green, // Border color when the field is not focused
-        width: 2.0,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.blue, // Border color when the field is focused
-        width: 2.0,
-      ),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(
-        color: Colors.red, // Border color when there's an error
-        width: 2.0,
-      ),
-    ),
-  
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                        color: Colors.green,
+                        width: 2.0,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                        color: Colors.blue,
+                        width: 2.0,
+                      ),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                        color: Colors.red,
+                        width: 2.0,
+                      ),
+                    ),
                   ),
-                  maxLines: 5, // Allows multiple lines for feedback
+                  maxLines: 5,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your feedback';
                     }
                     return null;
                   },
-                  onSaved: (value) {
-                    _feedback = value!;
-                  },
+                  onSaved: (value) {},
                 ),
                 const SizedBox(height: 20),
-                CustomButton(text: 'Submit Feedback', onPressed: () {
-                if (_errorMessage != null) {
+                
+             
+                
+                CustomButton(
+                  text: 'Submit Feedback',
+                  onPressed: _submitFeedback,
+                ),
+                if (_errorMessage != null)
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: Text(
                       _errorMessage!,
                       style: const TextStyle(color: Colors.red),
-                    ));
-                }  
-                },
-                
+                    ),
                   ),
               ],
             ),

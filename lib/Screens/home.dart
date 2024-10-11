@@ -1,3 +1,5 @@
+import 'package:laptopharbor/Text/dawertext.dart';
+
 import '../export/exports.dart';
 
 // Create 3 separate screens for Dell, Toshiba, and HP
@@ -21,13 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 9, 2, 36),
-        title: const CustomText(
-          'Home Screen', style: TextStyle(),
+        backgroundColor: const Color.fromARGB(255, 17, 2, 78),
+        title: const CustomLoginText(
+          '',
+          style: TextStyle(),
         ),
       ),
       drawer: Drawer(
-        backgroundColor: const Color.fromARGB(255, 9, 2, 36),
+        backgroundColor: const Color.fromARGB(255, 17, 2, 78),
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -37,17 +40,20 @@ class _HomeScreenState extends State<HomeScreen> {
               accountEmail: Text('okelly@example.com'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage:
-                    AssetImage('assets/images/ca.gif'), // Your profile image
+                    AssetImage('assets/images/home.jpeg'), // Your profile image
               ),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 9, 2, 36),
+                color: Color.fromARGB(255, 17, 2, 78),
               ),
             ),
             // Home item
             ListTile(
               leading: Icon(Icons.home,
                   color: activeIcon == 'home' ? Colors.white : Colors.grey),
-              title: const CustomText('Home', style: TextStyle(),),
+              title: const DawerText(
+                'Home',
+                style: TextStyle(),
+              ),
               onTap: () {
                 setState(() {
                   activeIcon = 'home'; // Change the icon to active state
@@ -61,22 +67,34 @@ class _HomeScreenState extends State<HomeScreen> {
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: DropdownButton<String>(
                 value: selectedLaptop,
-                hint: const CustomText('Select Laptop Brand',style: TextStyle(),),
+                hint: const DawerText(
+                  'Select Laptop Brand',
+                  style: TextStyle(),
+                ),
                 icon: const Icon(Icons.arrow_drop_down, color: Colors.white),
-                dropdownColor: const Color.fromARGB(255, 9, 2, 36),
+                dropdownColor: const Color.fromARGB(255, 17, 2, 78),
                 isExpanded: true,
                 items: const [
                   DropdownMenuItem(
                     value: 'Dell',
-                    child: CustomText('Dell', style: TextStyle(),),
+                    child: DawerText(
+                      'Dell',
+                      style: TextStyle(),
+                    ),
                   ),
                   DropdownMenuItem(
                     value: 'Toshiba',
-                    child: CustomText('Toshiba',style: TextStyle(),),
+                    child: DawerText(
+                      'Toshiba',
+                      style: TextStyle(),
+                    ),
                   ),
                   DropdownMenuItem(
                     value: 'Hp',
-                    child: CustomText('HP',style: TextStyle(),),
+                    child: DawerText(
+                      'HP',
+                      style: TextStyle(),
+                    ),
                   ),
                 ],
                 onChanged: (String? newValue) {
@@ -108,7 +126,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               leading: Icon(Icons.feedback,
                   color: activeIcon == 'feedback' ? Colors.white : Colors.grey),
-              title: const CustomText('Feedback',style: TextStyle(),),
+              title: const DawerText(
+                'Feedback',
+                style: TextStyle(),
+              ),
               onTap: () {
                 setState(() {
                   activeIcon = 'feedback'; // Change the icon to active state
@@ -125,7 +146,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               leading: Icon(Icons.shopping_cart,
                   color: activeIcon == 'feedback' ? Colors.white : Colors.grey),
-              title: const CustomText('Add to Cart',style: TextStyle(),),
+              title: const DawerText(
+                'Add to Cart',
+                style: TextStyle(),
+              ),
               onTap: () {
                 setState(() {
                   activeIcon = 'Add to Cart'; // Change the icon to active state
@@ -142,7 +166,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               leading: Icon(Icons.exit_to_app,
                   color: activeIcon == 'signout' ? Colors.white : Colors.grey),
-              title: const CustomText('Sign Out',style: TextStyle(),),
+              title: const DawerText(
+                'Sign Out',
+                style: TextStyle(),
+              ),
               onTap: () {
                 setState(() {
                   activeIcon = 'signout'; // Change the icon to active state
@@ -192,7 +219,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           horizontal: 16, vertical: 12),
                       backgroundColor: const Color.fromARGB(255, 235, 234, 238),
                     ),
-                    child: const Icon(Icons.search,color:  Color.fromARGB(255, 9, 2, 36),),
+                    child: const Icon(
+                      Icons.search,
+                      color: Color.fromARGB(255, 9, 2, 36),
+                    ),
                   ),
                 ],
               ),
@@ -201,77 +231,83 @@ class _HomeScreenState extends State<HomeScreen> {
               // Top container for the image
               Container(
                 width: double.infinity,
-                height: screenSize.height * 0.3, // Adjust height as needed
+                height: screenSize.height * 0.2, // Adjust height as needed
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: const Color.fromARGB(255, 9, 2, 36),
+                  color: const Color.fromARGB(255, 17, 2, 78),
                   image: const DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage('assets/images/ca.gif'),
+                    image: AssetImage('assets/images/home.jpeg'),
                   ),
                 ),
               ),
-              SizedBox(height: screenSize.height * 0.05),
-
+              SizedBox(
+                  height: screenSize.height * 0.05), // SizedBox for spacing
+              const Column(
+                children: [   CustomText(
+                        'All Products',
+                        style: TextStyle(),
+                      ),
+                  ],
+              ),
+              SizedBox(
+                  height: screenSize.height * 0.05), // SizedBox for spacing
               // Expanded to allow the grid view to take the remaining space
 
               Expanded(
-                flex: 1,
-                child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: (screenSize.width < 600) ? 2 : 3,
-                    childAspectRatio: (screenSize.width < 600) ? 0.75 : 1.0,
-                    mainAxisSpacing: 7.0,
-                    crossAxisSpacing: 7.0,
-                  ),
-                  itemCount: 9,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                DetailScreen(itemIndex: index + 1),
-                          ),
-                        );
-                      },
-                      child: Center(
-                        child: SizedBox(
-                          height: screenSize.height * 0.6,
-                          width: screenSize.width *
-                              0.45, // Increased width slightly
-                          child: Card(
-                            elevation: 8,
-                         //   color: const Color.fromARGB(255, 235, 234, 238),
-                            shape: const RoundedRectangleBorder(
-                              // Ensures no circular effect
-                              borderRadius: BorderRadius.zero,
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  height: screenSize.height * 0.15,
-                                  width: screenSize.width *
-                                      0.45, // Adjusted width accordingly
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/google.png'),
-                                      fit: BoxFit.cover,
-                                    ),
+                  flex: 1,
+                  child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: (screenSize.width < 600) ? 2 : 3,
+                        childAspectRatio: (screenSize.width < 600) ? 0.75 : 1.0,
+                        mainAxisSpacing: 4.0,
+                        crossAxisSpacing: 4.0,
+                      ),
+                      itemCount: 9,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetailScreen(itemIndex: index + 1),
+                                ),
+                              );
+                            },
+                            child: Center(
+                              child: SizedBox(
+                                height: screenSize.height * 0.6,
+                                width: screenSize.width *
+                                    0.45, // Increased width slightly
+                                child: Card(
+                                  elevation: 8,
+                                  //   color: const Color.fromARGB(255, 235, 234, 238),
+                                  shape: const RoundedRectangleBorder(
+                                    // Ensures no circular effect
+                                    borderRadius: BorderRadius.zero,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        height: screenSize.height * 0.15,
+                                        width: screenSize.width *
+                                            0.45, // Adjusted width accordingly
+                                        decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/google.png'),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
+                              ),
+                            ));
+                      }))
             ],
           ),
         ),

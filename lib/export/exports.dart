@@ -11,3 +11,6 @@ export 'package:laptopharbor/Screens/del.dart';
 export 'package:laptopharbor/Screens/hp.dart';
 export 'package:laptopharbor/Screens/toshiba.dart';
 export 'package:laptopharbor/Screens/home.dart';
+export 'package:flutter_rating_bar/flutter_rating_bar.dart';
+export 'package:laptopharbor/Text/feedback.dart';
+export '../Text/logintext.dart';

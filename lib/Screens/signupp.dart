@@ -1,7 +1,5 @@
 
 
-
-
 import '../export/exports.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -37,6 +35,7 @@ class SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         children: [
@@ -48,9 +47,9 @@ class SignupScreenState extends State<SignupScreen> {
             child: CustomContainer(
               text: '',
               child: Column(children: [Center(
-                child: CustomText(
-                  'Laptop Signup'
-                ),
+                child:CustomLoginText('Laptop Harbor',
+                            style: TextStyle()),
+                    
               )],)
               
               //SizedBox.shrink(), // No additional child in the top container
@@ -74,6 +73,12 @@ class SignupScreenState extends State<SignupScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      const  CustomText(
+                        'Signup ',
+                        style: TextStyle(),
+                      ),
+                      
+                      SizedBox(height: screenSize.height * 0.05),// SizedBox for spacing,
                                             TextFormField(
   decoration: InputDecoration(
     labelText: 'Email',

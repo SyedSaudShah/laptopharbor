@@ -20,7 +20,7 @@ class CustomContainer extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 9, 2, 36), // Background color
+        color: const Color.fromARGB(255, 1, 44, 106), // Background color
         borderRadius: BorderRadius.circular(10), // Rounded corners
         border: Border.all(
           color: Colors.white, // Border color

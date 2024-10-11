@@ -1,6 +1,5 @@
 
 import '../export/exports.dart';
-
 class Signupbtn extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
@@ -17,14 +16,14 @@ class Signupbtn extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: .0),
       child: Container(
         decoration: const BoxDecoration(),
-       height: 60,
-        width: 100, // Take up the full width
+        height: 70,  // Height of the button
+        width: 130,   // Set width equal to height for a circular button
         child: Material(
-          color:  const Color.fromARGB(255, 9, 2, 36),
-          borderRadius: BorderRadius.circular(8.0),
+          color: const Color.fromARGB(255, 1, 44, 106),
+          borderRadius: BorderRadius.circular(30.0), // Half of the height and width to make it fully circular
           child: InkWell(
             onTap: onPressed,
-            borderRadius: BorderRadius.circular(8.0),
+            borderRadius: BorderRadius.circular(30.0), // Same borderRadius for the ripple effect
             child: Container(
               padding: const EdgeInsets.all(16.0),
               child: Center(

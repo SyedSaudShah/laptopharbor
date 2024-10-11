@@ -1,5 +1,3 @@
-
-
 import '../export/exports.dart';
 
 class DelScreen extends StatelessWidget {
@@ -7,10 +5,10 @@ class DelScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   final screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Dell')),
+     appBar: AppBar(title: const Text('Del')),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -48,25 +46,28 @@ class DelScreen extends StatelessWidget {
                           horizontal: 16, vertical: 12),
                       backgroundColor: const Color.fromARGB(255, 235, 234, 238),
                     ),
-                    child: const Icon(Icons.search,color:  Color.fromARGB(255, 9, 2, 36),),
+                    child: const Icon(
+                      Icons.search,
+                      color: Color.fromARGB(255, 9, 2, 36),
+                    ),
                   ),
                 ],
               ),
               const SizedBox(height: 12),
 
               // Top container for the image
-              Container(
-                width: double.infinity,
-                height: screenSize.height * 0.3, // Adjust height as needed
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color.fromARGB(255, 9, 2, 36),
-                  image: const DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/images/ca.gif'),
-                  ),
-                ),
-              ),
+              // Container(
+              //   width: double.infinity,
+              //   height: screenSize.height * 0.3, // Adjust height as needed
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(20),
+              //     color: const Color.fromARGB(255, 9, 2, 36),
+              //     image: const DecorationImage(
+              //       fit: BoxFit.cover,
+              //       image: AssetImage('assets/images/ca.gif'),
+              //     ),
+              //   ),
+              // ),
               SizedBox(height: screenSize.height * 0.05),
 
               // Expanded to allow the grid view to take the remaining space
@@ -99,7 +100,7 @@ class DelScreen extends StatelessWidget {
                               0.45, // Increased width slightly
                           child: Card(
                             elevation: 8,
-                         //   color: const Color.fromARGB(255, 235, 234, 238),
+                            //   color: const Color.fromARGB(255, 235, 234, 238),
                             shape: const RoundedRectangleBorder(
                               // Ensures no circular effect
                               borderRadius: BorderRadius.zero,

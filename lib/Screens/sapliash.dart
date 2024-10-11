@@ -1,5 +1,7 @@
+import 'package:laptopharbor/Text/laptoptext.dart';
 
 import '../export/exports.dart';
+
 class SaplishScreen extends StatelessWidget {
   const SaplishScreen({super.key});
 
@@ -9,44 +11,60 @@ class SaplishScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        body: Center(
-          child: Column(
-            children: [
-              Container(
-                decoration: const BoxDecoration( image: DecorationImage(
-                image: AssetImage('assets/images/background.jpeg'), // Path to your image
-                fit: BoxFit.cover, // Ensures the image covers the entire screen
-              ),),
-                width: size.width,
-                height: size.height * 0.7,
-                child: const Center(
-                  child: CustomText('Discover the Best Deals on Top-Quality Laptops!', style: TextStyle(),),
-                ),
-              ),
-              const Spacer(),
-              CustomButton(
-                text: 'Login', 
-                onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const LoginScreen(),
+        body: Stack(
+          children: [
+            Positioned.fill(
+              child: Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover, // Ensures the image covers the entire screen properly
+                    image: AssetImage('assets/images/background.jpeg'),
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
-              CustomButton(
-                text: 'Signup', 
-                onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SignupScreen(),
+            ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 2), // Added space between logo and text
+                    child: SizedBox(
+                      height: size.height * 0.3, // Adjusted height for the logo to ensure proper scaling
+                      width: size.width * 0.6, // Proper scaling of the logo width
+                      child: Image.asset(
+                        'assets/images/logo-removebg-preview.png',
+                        fit: BoxFit.contain, // Makes sure the image is not stretched or squeezed
+                      ),
+                    ),
                   ),
-                ),
+                  const LaptopText(
+                    'Laptop Harbor',
+                    style: TextStyle(
+                      fontSize: 30.0, // Adjusted font size for better scaling
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const Spacer(),
+                  CustomButton(
+                    text: 'Get Started',
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 30), // Space at the bottom of the screen
+                ],
               ),
-              const Spacer(),
-            ],
-          ),
+            ),
+          ],
         ),
         backgroundColor: const Color.fromARGB(255, 9, 2, 36),
       ),
     );
   }
-}  
+}

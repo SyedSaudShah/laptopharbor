@@ -55,19 +55,7 @@ class ToshibaScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              // Top container for the image
-              Container(
-                width: double.infinity,
-                height: screenSize.height * 0.3, // Adjust height as needed
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color.fromARGB(255, 9, 2, 36),
-                  image: const DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/images/ca.gif'),
-                  ),
-                ),
-              ),
+              
               SizedBox(height: screenSize.height * 0.05),
 
               // Expanded to allow the grid view to take the remaining space
