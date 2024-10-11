@@ -14,13 +14,13 @@ class SaplishScreen extends StatelessWidget {
             children: [
               Container(
                 decoration: const BoxDecoration( image: DecorationImage(
-                image: AssetImage('assets/images/ca.gif'), // Path to your image
+                image: AssetImage('assets/images/background.jpeg'), // Path to your image
                 fit: BoxFit.cover, // Ensures the image covers the entire screen
               ),),
                 width: size.width,
                 height: size.height * 0.7,
                 child: const Center(
-                  child: CustomText('Discover the Best Deals on Top-Quality Laptops!'),
+                  child: CustomText('Discover the Best Deals on Top-Quality Laptops!', style: TextStyle(),),
                 ),
               ),
               const Spacer(),
@@ -49,4 +49,4 @@ class SaplishScreen extends StatelessWidget {
       ),
     );
   }
-}
+}  

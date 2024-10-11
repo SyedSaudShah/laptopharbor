@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 9, 2, 36),
         title: const CustomText(
-          'Home Screen',
+          'Home Screen', style: TextStyle(),
         ),
       ),
       drawer: Drawer(
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               leading: Icon(Icons.home,
                   color: activeIcon == 'home' ? Colors.white : Colors.grey),
-              title: const CustomText('Home'),
+              title: const CustomText('Home', style: TextStyle(),),
               onTap: () {
                 setState(() {
                   activeIcon = 'home'; // Change the icon to active state
@@ -61,22 +61,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: DropdownButton<String>(
                 value: selectedLaptop,
-                hint: const CustomText('Select Laptop Brand'),
+                hint: const CustomText('Select Laptop Brand',style: TextStyle(),),
                 icon: const Icon(Icons.arrow_drop_down, color: Colors.white),
                 dropdownColor: const Color.fromARGB(255, 9, 2, 36),
                 isExpanded: true,
                 items: const [
                   DropdownMenuItem(
                     value: 'Dell',
-                    child: CustomText('Dell'),
+                    child: CustomText('Dell', style: TextStyle(),),
                   ),
                   DropdownMenuItem(
                     value: 'Toshiba',
-                    child: CustomText('Toshiba'),
+                    child: CustomText('Toshiba',style: TextStyle(),),
                   ),
                   DropdownMenuItem(
                     value: 'Hp',
-                    child: CustomText('HP'),
+                    child: CustomText('HP',style: TextStyle(),),
                   ),
                 ],
                 onChanged: (String? newValue) {
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               leading: Icon(Icons.feedback,
                   color: activeIcon == 'feedback' ? Colors.white : Colors.grey),
-              title: const CustomText('Feedback'),
+              title: const CustomText('Feedback',style: TextStyle(),),
               onTap: () {
                 setState(() {
                   activeIcon = 'feedback'; // Change the icon to active state
@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               leading: Icon(Icons.shopping_cart,
                   color: activeIcon == 'feedback' ? Colors.white : Colors.grey),
-              title: const CustomText('Add to Cart'),
+              title: const CustomText('Add to Cart',style: TextStyle(),),
               onTap: () {
                 setState(() {
                   activeIcon = 'Add to Cart'; // Change the icon to active state
@@ -142,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               leading: Icon(Icons.exit_to_app,
                   color: activeIcon == 'signout' ? Colors.white : Colors.grey),
-              title: const CustomText('Sign Out'),
+              title: const CustomText('Sign Out',style: TextStyle(),),
               onTap: () {
                 setState(() {
                   activeIcon = 'signout'; // Change the icon to active state
