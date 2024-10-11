@@ -23,14 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 17, 2, 78),
+        backgroundColor: const Color.fromARGB(255, 1, 44, 106),
         title: const CustomLoginText(
           '',
           style: TextStyle(),
         ),
       ),
       drawer: Drawer(
-        backgroundColor: const Color.fromARGB(255, 17, 2, 78),
+        backgroundColor: const Color.fromARGB(255, 1, 44, 106),
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     AssetImage('assets/images/home.jpeg'), // Your profile image
               ),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 17, 2, 78),
+                color: Color.fromARGB(255, 1, 44, 106),
               ),
             ),
             // Home item
